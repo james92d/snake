@@ -24,7 +24,14 @@ body {
     border: 10px solid green;
 }
 
-.green-square {
+#snake-head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+}
+
+.snake-body {
     width: 50px;
     height: 50px;
     background-color: green;
