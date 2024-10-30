@@ -10,16 +10,16 @@ class Snake {
     changeDirection(key) {
         switch (key) {
             case "ArrowUp":
-                this.direction = "down";
+                if (this.direction !== "down") {this.direction = "up"}
                 break;
             case "ArrowDown":
-                this.direction = "up";
+                if (this.direction !== "up") {this.direction = "down"}
                 break;
             case "ArrowLeft":
-                this.direction = "left";
+                if (this.direction !== "right") {this.direction = "left"}
                 break;
             case "ArrowRight":
-                this.direction = "right";
+                if (this.direction !== "left") {this.direction = "right"}
                 break;
             default:
                 return;
@@ -29,10 +29,10 @@ class Snake {
     move() {
         switch (this.direction) {
             case "up":
-                this.head.y += 50;
+                this.head.y -= 50;
                 break;
             case "down":
-                this.head.y -= 50;               
+                this.head.y += 50;               
                 break; 
             case "left":
                 this.head.x -= 50;              

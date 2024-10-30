@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function mainLoop() {
         snake.move();
         snake.updatePosition();
-        console.log(snake.head.x);
     }
 
     document.addEventListener("keydown", (event) => {
