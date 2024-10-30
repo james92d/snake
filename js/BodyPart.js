@@ -1,9 +1,8 @@
 class BodyPart {
-    
-    constructor(x, y, element) {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.style = element.style;
+        this.element = document.getElementsByClassName("snake-body-part")[0];
     }
 }
 

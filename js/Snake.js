@@ -2,8 +2,7 @@ import BodyPart from './BodyPart.js';
 
 class Snake {
     constructor() {
-        this.head_element = document.getElementById("snake-head");
-        this.head = new BodyPart(200, 100, this.head_element);
+        this.head = new BodyPart(200, 100);
         this.direction = "right"
     }
 
@@ -44,8 +43,8 @@ class Snake {
     }
 
     updatePosition() {
-        this.head.style.left = `${this.head.x}px`;
-        this.head.style.top = `${this.head.y}px`;
+        this.head.element.style.left = `${this.head.x}px`;
+        this.head.element.style.top = `${this.head.y}px`;
     }
 }
 

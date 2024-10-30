@@ -14,5 +14,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(() => {
         mainLoop();
-    }, 400);
+    }, 250);
 });
