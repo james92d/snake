@@ -7,20 +7,22 @@ class Snake {
         this.direction = "right"
     }
 
-    changeDirection(new_direction) {
-        switch (new_direction) {
-            case "up":
+    changeDirection(key) {
+        switch (key) {
+            case "ArrowUp":
+                this.direction = "down";
+                break;
+            case "ArrowDown":
                 this.direction = "up";
                 break;
-            case "down":
-                this.direction = "down";                
-                break; 
-            case "left":
-                this.direction = "left";                
-                break; 
-            case "right":
+            case "ArrowLeft":
+                this.direction = "left";
+                break;
+            case "ArrowRight":
                 this.direction = "right";
                 break;
+            default:
+                return;
         }
     }
     

@@ -10,23 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("keydown", (event) => {
-        switch (event.key) {
-            case "ArrowUp":
-                snake.direction = "down";
-                break;
-            case "ArrowDown":
-                snake.direction = "up";
-                break;
-            case "ArrowLeft":
-                snake.direction = "left";
-                break;
-            case "ArrowRight":
-                snake.direction = "right";
-                break;
-            default:
-                // Ignore any other keys
-                return;
-        }
+        snake.changeDirection(event.key);
     })
 
     setInterval(() => {
