@@ -95,12 +95,15 @@ class Snake {
     
 
     isCollided() {
-        if (this.head.x < 0 || this.head.x >= 600 || this.head.y < 0 || this.head.y >= 450) {
+        if (this.head.x < 0 || this.head.x >= 600 || this.head.y < 0 || this.head.y >= 450)
             return true;
-        } else {
-            return false;
+        for (const tail_piece of this.tail) {
+            if (this.head.x === tail_piece.x && this.head.y === tail_piece.y)
+                return true;
         }
-    }
+            return false;
+        };
+        
 
     updatePosition() {
         this.tail[0].element.style.left = `${this.tail[0].x}px`;
