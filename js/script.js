@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         snake.processDirections();
         if (snake.isAtFood(food)) {
             snake.grow();
-            food.move();
+            food.move(snake.tail);
         } else {
-            snake.move();
+            snake.move(snake);
         }
         if (snake.isCollided()) {
             clearInterval(running);

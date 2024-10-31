@@ -12,9 +12,14 @@ class Food {
         this.element.style.top = `${this.y}px`;
     }
 
-    move() {
-        this.x = Utils.getRandomPos(12);
-        this.y = Utils.getRandomPos(9);
+    move(array) {
+        let isPositionValid = false;
+        while (!isPositionValid) {
+            this.x = Utils.getRandomPos(12);
+            this.y = Utils.getRandomPos(9);
+            isPositionValid = !array.some(element => element.x === this.x && element.y === this.y);
+        }
+    
         this.element.style.left = `${this.x}px`;
         this.element.style.top = `${this.y}px`;
     }
