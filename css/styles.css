@@ -7,28 +7,12 @@ body {
     background-color: #000000;
 }
 
-/* .border-container {
+#game-container {
     position: relative;
-    width: 100%;
-    height: 100%;
-} */
-
-.border {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 960px;
-    height: 320px;
-    margin-bottom: 40px;
+    width: 600px;
+    height: 450px;
     background-color: 000000;
     border: 10px solid green;
-}
-
-#snake-head {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: green;
 }
 
 .snake-body-part {
@@ -38,6 +22,13 @@ body {
     background-color: green;
 }
 
-.title {
+.food {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url("../assets/pumpkin.png");
+}
+
+.text {
     color: #007700;
 }
