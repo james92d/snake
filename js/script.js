@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let food = new Food();
 
     document.addEventListener("keydown", (event) => {
-        snake.changeDirection(event.key);
+        snake.appendDirection(event.key);
     })
 
     function mainLoop() {
-        
+        snake.processDirections();
         if (snake.isAtFood(food)) {
             snake.grow();
             food.move();

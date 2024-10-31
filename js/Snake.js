@@ -3,30 +3,47 @@ import BodyPart from './BodyPart.js';
 class Snake {
     constructor() {
         this.head = new BodyPart(200, 100);
-        this.direction = "right";
+        this.current_direction = "right"
+        this.directions = ["right"];
         this.tail = [];
         this.tail.push(new BodyPart(150, 100));
         this.tail.push(new BodyPart(100, 100));
     }
 
-    changeDirection(key) {
-        switch (key) {
-            case "ArrowUp":
-                if (this.direction !== "down") {this.direction = "up"}
-                break;
-            case "ArrowDown":
-                if (this.direction !== "up") {this.direction = "down"}
-                break;
-            case "ArrowLeft":
-                if (this.direction !== "right") {this.direction = "left"}
-                break;
-            case "ArrowRight":
-                if (this.direction !== "left") {this.direction = "right"}
-                break;
-            default:
-                return;
+    appendDirection(key) {
+        if (this.directions.length < 3) {
+            switch (key) {
+                case "ArrowUp":
+                    this.directions.unshift("up")
+                    break;
+                case "ArrowDown":
+                    this.directions.unshift("down")
+                    break;
+                case "ArrowLeft":
+                    this.directions.unshift("left")                    
+                    break;
+                case "ArrowRight":
+                    this.directions.unshift("right")                    
+                    break;
+                default:
+                    return;
+            }
         }
     }
+    
+    processDirections() {
+        for (let i = 0; i < 2; i++) {
+            if (this.directions[this.directions.length - 1] === this.current_direction ||
+                this.directions[this.directions.length - 1]  === "up" && this.current_direction === "down" ||
+                this.directions[this.directions.length - 1]  === "down" && this.current_direction === "up" ||
+                this.directions[this.directions.length - 1]  === "left" && this.current_direction === "right" ||
+                this.directions[this.directions.length - 1]  === "right" && this.current_direction === "left")
+                this.directions.pop();
+        }
+        if (this.directions[this.directions.length - 1])
+            this.current_direction = this.directions.pop();
+        };
+    
     
     move() {
         this.tail_piece = this.tail.pop();
@@ -34,7 +51,7 @@ class Snake {
         this.tail_piece.y = this.head.y;
         this.tail.unshift(this.tail_piece);
 
-        switch (this.direction) {
+        switch (this.current_direction) {
             case "up":
                 this.head.y -= 50;
                 break;
@@ -52,7 +69,7 @@ class Snake {
 
     grow() {
         this.tail.unshift(new BodyPart(this.head.x, this.head.y));
-        switch (this.direction) {
+        switch (this.current_direction) {
             case "up":
                 this.head.y -= 50;
                 break;
