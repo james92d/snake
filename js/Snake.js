@@ -75,7 +75,6 @@ class Snake {
 
     grow() {
         this.tail.unshift(new BodyPart(this.last_head_pos[0], this.last_head_pos[1]));
-
     }
     
 
