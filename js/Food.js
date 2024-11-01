@@ -15,8 +15,8 @@ class Food {
     move(snake) {
         let isPositionValid = false;
         while (!isPositionValid) {
-            this.x = Utils.getRandomPos(12);
-            this.y = Utils.getRandomPos(9);
+            this.x = Utils.getRandomPos(Utils.width);
+            this.y = Utils.getRandomPos(Utils.height);
             isPositionValid = 
                 !snake.tail.some(element => element.x === this.x && element.y === this.y) && 
                 !(snake.head.x === this.x && snake.head.y === this.y);

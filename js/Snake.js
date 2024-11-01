@@ -16,16 +16,24 @@ class Snake {
         if (this.directions.length < 3) {
             switch (key) {
                 case "ArrowUp":
-                    this.directions.unshift("up")
+                case "w":
+                case "W":
+                    this.directions.unshift("up");
                     break;
                 case "ArrowDown":
-                    this.directions.unshift("down")
+                case "s":
+                case "S":
+                    this.directions.unshift("down");
                     break;
                 case "ArrowLeft":
-                    this.directions.unshift("left")                    
+                case "a":
+                case "A":
+                    this.directions.unshift("left");
                     break;
                 case "ArrowRight":
-                    this.directions.unshift("right")                    
+                case "d":
+                case "D":
+                    this.directions.unshift("right");
                     break;
                 default:
                     return;

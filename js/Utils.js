@@ -3,7 +3,7 @@ class Utils {
     static height = 18;
     static size = 25;
     static delay = 100;
-
+    
     static position(pos) {
         return pos * Utils.size;
     } 
