@@ -11,11 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mainLoop() {
         snake.processDirections();
+        snake.last_head_pos = snake.getlastHeadPos();
+        snake.moveHead();
         if (snake.isAtFood(food)) {
             snake.grow();
             food.move(snake.tail);
         } else {
-            snake.move(snake);
+            snake.moveTail(snake.last_head_pos);
         }
         if (snake.isCollided()) {
             clearInterval(running);

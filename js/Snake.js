@@ -3,7 +3,8 @@ import BodyPart from './BodyPart.js';
 class Snake {
     constructor() {
         this.head = new BodyPart(200, 100);
-        this.current_direction = "right"
+        this.last_head_pos = [];
+        this.current_direction = "right";
         this.directions = ["right"];
         this.tail = [];
         this.tail.push(new BodyPart(150, 100));
@@ -44,13 +45,11 @@ class Snake {
             this.current_direction = this.directions.pop();
         };
     
-    
-    move() {
-        this.tail_piece = this.tail.pop();
-        this.tail_piece.x = this.head.x;
-        this.tail_piece.y = this.head.y;
-        this.tail.unshift(this.tail_piece);
+    getlastHeadPos() {
+        return [this.head.x, this.head.y];
+    }
 
+    moveHead() {
         switch (this.current_direction) {
             case "up":
                 this.head.y -= 50;
@@ -65,25 +64,20 @@ class Snake {
                 this.head.x += 50;
                 break;
         }
+    }
+
+    moveTail(position) {
+        this.tail_piece = this.tail.pop();
+        this.tail_piece.x = position[0];
+        this.tail_piece.y = position[1];
+        this.tail.unshift(this.tail_piece);
     }
 
     grow() {
-        this.tail.unshift(new BodyPart(this.head.x, this.head.y));
-        switch (this.current_direction) {
-            case "up":
-                this.head.y -= 50;
-                break;
-            case "down":
-                this.head.y += 50;               
-                break; 
-            case "left":
-                this.head.x -= 50;              
-                break; 
-            case "right":
-                this.head.x += 50;
-                break;
-        }
+        this.tail.unshift(new BodyPart(this.last_head_pos[0], this.last_head_pos[1]));
+
     }
+    
 
     isAtFood(food) {
         if (food.x === this.head.x && food.y === this.head.y) {
