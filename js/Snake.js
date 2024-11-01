@@ -1,14 +1,15 @@
 import BodyPart from './BodyPart.js';
+import Utils from './Utils.js';
 
 class Snake {
     constructor() {
-        this.head = new BodyPart(200, 100);
+        this.head = new BodyPart(Utils.position(4), Utils.position(2));
         this.last_head_pos = [];
-        this.current_direction = "right";
         this.directions = ["right"];
+        this.current_direction = this.directions[0];
         this.tail = [];
-        this.tail.push(new BodyPart(150, 100));
-        this.tail.push(new BodyPart(100, 100));
+        this.tail.push(new BodyPart(Utils.position(3), Utils.position(2)));
+        this.tail.push(new BodyPart(Utils.position(2), Utils.position(2)));
     }
 
     appendDirection(key) {
@@ -45,23 +46,20 @@ class Snake {
             this.current_direction = this.directions.pop();
         };
     
-    getlastHeadPos() {
-        return [this.head.x, this.head.y];
-    }
-
     moveHead() {
+        this.last_head_pos = [this.head.x, this.head.y];
         switch (this.current_direction) {
             case "up":
-                this.head.y -= 50;
+                this.head.y -= Utils.position(1);
                 break;
             case "down":
-                this.head.y += 50;               
+                this.head.y += Utils.position(1);               
                 break; 
             case "left":
-                this.head.x -= 50;              
+                this.head.x -= Utils.position(1);              
                 break; 
             case "right":
-                this.head.x += 50;
+                this.head.x += Utils.position(1);
                 break;
         }
     }
@@ -88,7 +86,7 @@ class Snake {
     
 
     isCollided() {
-        if (this.head.x < 0 || this.head.x >= 600 || this.head.y < 0 || this.head.y >= 450)
+        if (this.head.x < 0 || this.head.x >= Utils.position(Utils.width) || this.head.y < 0 || this.head.y >= Utils.position(Utils.height))
             return true;
         for (const tail_piece of this.tail) {
             if (this.head.x === tail_piece.x && this.head.y === tail_piece.y)

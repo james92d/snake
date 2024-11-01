@@ -1,21 +1,23 @@
 import Snake from './Snake.js';
 import Food from './Food.js';
+import Utils from './Utils.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+
     let snake = new Snake();
     let food = new Food();
-
+    Utils.setSizesCSS();
+    
     document.addEventListener("keydown", (event) => {
         snake.appendDirection(event.key);
     })
 
     function mainLoop() {
         snake.processDirections();
-        snake.last_head_pos = snake.getlastHeadPos();
         snake.moveHead();
         if (snake.isAtFood(food)) {
             snake.grow();
-            food.move(snake.tail);
+            food.move(snake);
         } else {
             snake.moveTail(snake.last_head_pos);
         }
@@ -28,5 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const running = setInterval(() => {
         mainLoop();
-    }, 250);
+    }, Utils.delay);
+
 });
