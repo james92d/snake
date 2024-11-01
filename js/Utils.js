@@ -1,8 +1,8 @@
 class Utils {
-    static width = 15;
-    static height = 9;
-    static size = 40;
-    static delay = 250;
+    static width = 30;
+    static height = 18;
+    static size = 25;
+    static delay = 100;
 
     static position(pos) {
         return pos * Utils.size;
