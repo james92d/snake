@@ -1,15 +1,17 @@
 class Utils {
-    static width = 30;
-    static height = 18;
-    static size = 25;
-    static delay = 100;
+    static screenWidth;
+    static size;
+    static width;
+    static height;
     
-    static position(pos) {
-        return pos * Utils.size;
-    } 
+    static delay = 100;
 
-    static getRandomPos(range) {
-        return Math.floor(Math.random() * range) * Utils.size;
+    static setSizesGame() {
+        let windowSize = window.innerWidth;
+        Utils.screenWidth = windowSize > 620 ? 600 : Math.floor((windowSize - 20) / 50) * 50;
+        Utils.size = Utils.screenWidth / 20;
+        Utils.width = Math.floor(Utils.screenWidth / Utils.size);
+        Utils.height = Math.floor(Utils.width * 0.6);
     }
 
     static setSizesCSS() {
@@ -20,6 +22,14 @@ class Utils {
             #game-container {width: ${this.size * this.width}px;  height: ${this.size * this.height}px;}
         `;
         document.head.appendChild(style);
+    }
+
+    static position(pos) {
+        return pos * Utils.size;
+    } 
+
+    static getRandomPos(range) {
+        return Math.floor(Math.random() * range) * Utils.size;
     }
 }
 

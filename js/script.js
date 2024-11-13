@@ -4,13 +4,36 @@ import Utils from './Utils.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    let snake = new Snake();
-    let food = new Food();
+    Utils.setSizesGame();
     Utils.setSizesCSS();
     
+    let snake = new Snake();
+    let food = new Food();
+
     document.addEventListener("keydown", (event) => {
         snake.appendDirection(event.key);
     })
+
+    const ArrowUp = document.getElementById('arrow-up');
+    const ArrowDown = document.getElementById('arrow-down');
+    const ArrowLeft = document.getElementById('arrow-left');
+    const ArrowRight = document.getElementById('arrow-right');
+
+    ArrowUp.addEventListener('touchstart', function(event) {
+        snake.appendDirection("ArrowUp");
+    });
+
+    ArrowDown.addEventListener('touchstart', function(event) {
+        snake.appendDirection("ArrowDown");
+    });
+
+    ArrowLeft.addEventListener('touchstart', function(event) {
+        snake.appendDirection("ArrowLeft");
+    });
+
+    ArrowRight.addEventListener('touchstart', function(event) {
+        snake.appendDirection("ArrowRight");
+    });
 
     function mainLoop() {
         snake.processDirections();
