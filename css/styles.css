@@ -16,15 +16,15 @@ body {
 #arrows {
     display: none;
     flex-wrap: wrap;
-    width: 450px;
-    height: 450px;
+    width: 360px;
+    height: 360px;
     position: relative;
 }
 
 @media (max-width: 600px) {
     #arrows {
-        display: flex;  /* Make sure it is visible */
-        margin-top: 50px; /* This ensures the element is "below" another content if needed */
+        display: flex;
+        margin-top: 10px;
     }
 }
 
@@ -32,8 +32,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px; /* Adjust the size of each arrow */
-    height: 150px; /* Adjust the size of each arrow */
+    width: 120px;
+    height: 120px;
     position: absolute;
     background-image: url("../assets/arrow.png");
     background-size: cover;
@@ -41,25 +41,25 @@ body {
   
 .up {
     top: 0px;
-    left: 150px;
+    left: 120px;
     transform: rotate(270deg);
 }
 
 .down {
-    top: 150px;
-    left: 150px;
+    top: 120px;
+    left: 120px;
     transform: rotate(90deg);
 }
 
 .left {
-    top: 75px;
+    top: 60px;
     left: 0px;
     transform: rotate(180deg);
 }
 
 .right {
-    top: 75px;
-    left: 300px;
+    top: 60px;
+    left: 240px;
 }
 
 .snake-body-part {
